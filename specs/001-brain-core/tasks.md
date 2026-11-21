@@ -6,10 +6,10 @@
 
 ## Phase 0 — Setup
 
-- [ ] **T001** Init `go.mod` (module `github.com/ladvoy/brain`, Go pinned); deps: pgx/v5, chi, goose, oapi-codegen, testcontainers-go, gojsonschema
-- [ ] **T002** `cmd/brain/main.go`: env config (`DATABASE_URL`, `BIND_ADDR`), chi router, graceful shutdown; health endpoint
-- [ ] **T003** `migrations/0001_init.sql` per data-model.md (8 tables; paradedb_bm25 index guarded by extension presence; tsvector generated column + GIN as fallback; audit INSERT/SELECT-only grants)
-- [ ] **T004** testcontainers harness: Postgres+pg_search container, both search modes asserted (pg_search present / vanilla fallback)
+- [x] **T001** Init `go.mod` (module `github.com/ladvoy/brain`, Go pinned); deps: pgx/v5, chi, goose, oapi-codegen, testcontainers-go, gojsonschema
+- [x] **T002** `cmd/brain/main.go`: env config (`DATABASE_URL`, `BIND_ADDR`), chi router, graceful shutdown; health endpoint
+- [x] **T003** `migrations/0001_init.sql` per data-model.md (8 tables; paradedb_bm25 index guarded by extension presence; tsvector generated column + GIN as fallback; audit INSERT/SELECT-only grants)
+- [x] **T004** testcontainers harness: Postgres+pg_search container, both search modes asserted (pg_search present / vanilla fallback)
 
 ## Phase 1 — Contract & skeleton
 

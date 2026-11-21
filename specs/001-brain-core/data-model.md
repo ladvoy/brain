@@ -58,7 +58,11 @@ CREATE TABLE cards (
   updated_at timestamptz NOT NULL DEFAULT now(),
   UNIQUE (project_id, slug)
 );
-CREATE INDEX cards_aliases_trgm ON cards USING gin (aliases gin_trgm_ops);
+CREATE INDEX cards_aliases_trgm ON cards USING gin ((aliases_trgm(aliases)) gin_trgm_ops);
+-- `aliases_trgm(text[]) -> text` is an IMMUTABLE sql wrapper around array_to_string
+-- (defined in migration 0001; array_to_string itself is STABLE and not indexable).
+-- Fuzzy alias queries use the same expression: aliases_trgm(aliases) % 'grndpa' or
+-- aliases_trgm(aliases) ILIKE '%…%'. Exact element match: plain GIN on the array when needed.
 
 CREATE TABLE facts (
   id             uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -90,9 +94,9 @@ CREATE INDEX facts_keys_idx   ON facts USING gin (keys);
 CREATE INDEX facts_core_idx   ON facts USING gin (core);
 CREATE INDEX facts_time_idx   ON facts (project_id, time_to);
 
--- BM25 (requires ParadeDB image; exact DDL re-checked against pg_search 0.27 docs in tasks)
+-- BM25 (requires ParadeDB image; access method is `bm25`, key field first)
 CREATE INDEX facts_bm25 ON facts
-USING paradedb_bm25 (text, status, time_from, time_to)
+USING bm25 (id, text, status, time_from, time_to)
 WITH (key_field='id');
 
 -- Fallback for vanilla Postgres (no pg_search): generated tsvector + GIN
