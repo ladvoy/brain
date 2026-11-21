@@ -30,3 +30,42 @@ func TestHealthz(t *testing.T) {
 		t.Fatalf("db field: got %q, want \"not configured\"", body["db"])
 	}
 }
+
+func TestFR022_OpenAPIAndDocs(t *testing.T) {
+	srv := httptest.NewServer(New(nil))
+	defer srv.Close()
+
+	resp, err := srv.Client().Get(srv.URL + "/openapi.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != 200 {
+		t.Fatalf("openapi.json: %d", resp.StatusCode)
+	}
+	var spec map[string]any
+	if err := json.NewDecoder(resp.Body).Decode(&spec); err != nil {
+		t.Fatal(err)
+	}
+	if spec["openapi"] == nil {
+		t.Fatal("missing openapi field")
+	}
+
+	resp, err = srv.Client().Get(srv.URL + "/openapi.yaml")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != 200 {
+		t.Fatalf("openapi.yaml: %d", resp.StatusCode)
+	}
+
+	resp, err = srv.Client().Get(srv.URL + "/docs")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != 200 {
+		t.Fatalf("docs: %d", resp.StatusCode)
+	}
+}

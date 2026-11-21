@@ -1,0 +1,9 @@
+.git
+.specify
+**/*_test.go
+test/
+testdata/
+*.md
+!README.md
+.cursor
+agent-transcripts

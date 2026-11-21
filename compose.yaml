@@ -1,0 +1,44 @@
+# Draft compose for local / self-host dogfood (final home: self-host repo, task 1.6).
+# Usage: docker compose up --build
+services:
+  db:
+    image: paradedb/paradedb:latest
+    environment:
+      POSTGRES_USER: brain
+      POSTGRES_PASSWORD: brain
+      POSTGRES_DB: brain
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U brain -d brain"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  migrate:
+    image: golang:bookworm
+    working_dir: /work
+    volumes:
+      - ./migrations:/work/migrations:ro
+    environment:
+      DATABASE_URL: postgres://brain:brain@db:5432/brain?sslmode=disable
+    depends_on:
+      db:
+        condition: service_healthy
+    entrypoint:
+      - bash
+      - -c
+      - |
+        go install github.com/pressly/goose/v3/cmd/goose@v3.24.1
+        goose -dir /work/migrations postgres "$$DATABASE_URL" up
+
+  brain:
+    build: .
+    environment:
+      DATABASE_URL: postgres://brain:brain@db:5432/brain?sslmode=disable
+      BIND_ADDR: ":8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully

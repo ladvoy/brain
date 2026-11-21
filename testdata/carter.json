@@ -1,0 +1,600 @@
+{
+  "spec": "portrait-card",
+  "spec_version": "0.1.0-draft",
+  "project": {
+    "slug": "carter",
+    "name": "The Carter family",
+    "roles": {
+      "adults": ["jack", "rose", "fred", "hunter"],
+      "children": ["rebecca"]
+    },
+    "interpretation": [],
+    "extensions": {}
+  },
+  "principals": [
+    { "slug": "jack", "attributes": { "language": "en" }, "card": "jack", "extensions": {} },
+    { "slug": "rose", "attributes": { "language": "en" }, "card": "rose", "extensions": {} },
+    { "slug": "fred", "attributes": { "language": "en" }, "card": "fred", "extensions": {} },
+    { "slug": "hunter", "attributes": { "language": "en" }, "card": "hunter", "extensions": {} },
+    { "slug": "rebecca", "attributes": { "language": "en", "style": "adult-tone" }, "card": "rebecca", "extensions": {} },
+    { "slug": "lad", "attributes": { "kind": "service" }, "extensions": {} }
+  ],
+  "groups": [
+    "health", "tastes", "gifts", "work", "money", "school",
+    "relationships", "hobbies", "household", "memory", "traditions",
+    "communication", "agreement"
+  ],
+  "cards": [
+    {
+      "slug": "jack",
+      "type": "person",
+      "name": "Jack Carter",
+      "aliases": ["Dad", "Pap"],
+      "facts": [
+        {
+          "id": "f_jack_role",
+          "text": "Jack is forty-eight; a mechanical engineer at a factory, he works shifts.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["work"]
+        },
+        {
+          "id": "f_jack_marriage",
+          "text": "Jack and Rose have been married for twenty years.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["relationships"]
+        },
+        {
+          "id": "f_jack_rebecca_fishing",
+          "text": "Jack and Rebecca are close — dawn fishing is theirs.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family life" },
+          "groups": ["relationships", "hobbies"]
+        },
+        {
+          "id": "f_jack_moto_garage",
+          "text": "Hunter's Kawasaki motorcycle is kept in Jack's garage; motorcycles are their shared topic.",
+          "status": "confirmed",
+          "source": { "type": "note", "ref": "family profile" },
+          "groups": ["hobbies"]
+        },
+        {
+          "id": "f_jack_back",
+          "text": "Jack's back acts up after long sitting; swimming helps.",
+          "status": "confirmed",
+          "source": { "type": "conversation", "ref": "family chat 09.2026" },
+          "groups": ["health"],
+          "visibility": { "mode": "role", "role": "adults" }
+        },
+        {
+          "id": "f_jack_audit",
+          "text": "A factory audit keeps Jack tense, so he is not planned into trips or occasions while it lasts.",
+          "status": "confirmed",
+          "source": { "type": "message", "ref": "family chat 11.2026" },
+          "time": { "from": "2026-11-01", "to": "2026-11-30" },
+          "groups": ["work"]
+        },
+        {
+          "id": "f_jack_table",
+          "text": "At the table Jack is a medium-rare steak and homemade bread man.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["tastes"]
+        },
+        {
+          "id": "f_jack_seafood",
+          "text": "Seafood is hopeless for Jack — it has never sat well with him, since childhood.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["tastes"],
+          "core": ["tastes"]
+        },
+        {
+          "id": "f_jack_romcoms",
+          "text": "Romantic comedies Jack would rather skip, without ceremony.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["tastes"]
+        },
+        {
+          "id": "f_jack_joys",
+          "text": "Jack's quiet joys: fishing at dawn, westerns in the evening, the garage with the radio on.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["tastes", "hobbies"]
+        },
+        {
+          "id": "f_jack_gifts",
+          "text": "Presents that always land for Jack: good fishing tackle, quality tools.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["gifts"],
+          "keys": ["gift for dad", "Jack's present"]
+        },
+        {
+          "id": "f_jack_surprises",
+          "text": "Never arrange public surprises for Jack — jokes played on him in front of people ruin his day; that is not a preference, that is a wall.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["gifts", "tastes"],
+          "core": ["gifts"]
+        }
+      ],
+      "extensions": {}
+    },
+    {
+      "slug": "rose",
+      "type": "person",
+      "name": "Rose Carter",
+      "aliases": ["Mom"],
+      "facts": [
+        {
+          "id": "f_rose_teacher",
+          "text": "Rose, forty-five, teaches history at school No. 7.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["work"]
+        },
+        {
+          "id": "f_rose_coordinator",
+          "text": "Rose is the family's coordinator in fact: the calendar, the doctors, the presents live with her.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family life" },
+          "groups": ["household"]
+        },
+        {
+          "id": "f_rose_fred_care",
+          "text": "Rose calls her father Fred twice a week and drives him to his appointments herself.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family life" },
+          "groups": ["relationships"]
+        },
+        {
+          "id": "f_rose_grief",
+          "text": "Losing her mother five years ago was hard on Rose.",
+          "author": "rose",
+          "status": "confirmed",
+          "source": { "type": "note", "ref": "Rose's notes" },
+          "groups": ["memory"],
+          "visibility": { "mode": "role", "role": "adults" }
+        },
+        {
+          "id": "f_rose_allergy",
+          "text": "Rose is allergic to scented things — candles, diffusers (an allergy specialist's certificate, February 2024); no scented candles are ever lit at home, and no one gives them to her.",
+          "status": "confirmed",
+          "source": { "type": "document", "ref": "allergy specialist certificate", "date": "2024-02-10" },
+          "groups": ["health", "gifts"],
+          "core": ["health", "gifts"],
+          "revalidate": "never"
+        },
+        {
+          "id": "f_rose_joys",
+          "text": "Rose's joys: ceramics workshops, historical novels, her garden.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["tastes", "hobbies"]
+        },
+        {
+          "id": "f_rose_gifts",
+          "text": "Presents that land for Rose: handmade ceramics, history books with good maps.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["gifts"],
+          "keys": ["gift for mom", "Rose's present"]
+        }
+      ],
+      "extensions": {}
+    },
+    {
+      "slug": "fred",
+      "type": "person",
+      "name": "Fred Holbrook",
+      "aliases": ["Grandpa", "Grandpa Fred"],
+      "facts": [
+        {
+          "id": "f_fred_retired",
+          "text": "Fred, seventy-one, is a retired draftsman from a design bureau.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["work"]
+        },
+        {
+          "id": "f_fred_widower",
+          "text": "Fred is a widower — his wife Gillian died five years ago, and her watercolors are kept in his room.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family life" },
+          "groups": ["memory", "relationships"]
+        },
+        {
+          "id": "f_fred_rebecca_chess",
+          "text": "Fred used to let Rebecca win at chess; not anymore.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family life" },
+          "groups": ["relationships", "hobbies"]
+        },
+        {
+          "id": "f_fred_hunter_chess",
+          "text": "Phone chess with Hunter is Fred's and Hunter's ritual.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family life" },
+          "groups": ["hobbies", "traditions"]
+        },
+        {
+          "id": "f_fred_collection",
+          "text": "Fred collects historical firearms — replicas and deactivated pieces, with a focus on the Napoleonic era; the budget is modest, and the joy is in the hunt and the people.",
+          "status": "confirmed",
+          "source": { "type": "message", "ref": "family chat 09.2026, confirmed by Rose" },
+          "time": { "from": "2026-09-20" },
+          "groups": ["hobbies", "gifts"],
+          "keys": ["gift for grandpa", "collection", "firearms", "Napoleonic"]
+        },
+        {
+          "id": "f_fred_no_expos",
+          "text": "Since November 2026 Fred has not made it to exhibitions or the collectors' club — transport is a hassle, and it means something to him.",
+          "status": "confirmed",
+          "source": { "type": "conversation", "ref": "with Rose 11.2026" },
+          "time": { "from": "2026-11-10" },
+          "groups": ["hobbies"],
+          "keys": ["expo", "where to take grandpa"]
+        },
+        {
+          "id": "f_fred_health",
+          "text": "Fred has a chronic condition watched by a urologist — a check-up once a quarter, per his March 2025 discharge summary.",
+          "author": "rose",
+          "status": "confirmed",
+          "source": { "type": "document", "ref": "urology discharge summary", "date": "2025-03-12" },
+          "time": { "from": "2025-03-12" },
+          "groups": ["health"],
+          "visibility": { "mode": "role", "role": "adults" },
+          "interpretation": [
+            {
+              "when": { "role": "children" },
+              "text": "Grandpa has age-related health troubles; what he needs is calm and company — don't pepper him with questions, just be nearby."
+            }
+          ],
+          "core": ["health"],
+          "revalidate": "P6M"
+        },
+        {
+          "id": "f_fred_apathy",
+          "text": "After Gillian died, Fred went numb for about a year; he is steady now, but the evenings are lonely.",
+          "author": "rose",
+          "status": "confirmed",
+          "source": { "type": "note", "ref": "Rose's notes", "date": "2025-06-01" },
+          "groups": ["health", "memory"],
+          "visibility": { "mode": "role", "role": "adults" },
+          "interpretation": [
+            {
+              "when": { "role": "children" },
+              "text": "Grandpa sometimes misses Grandma — call him more, tell him about school."
+            }
+          ]
+        },
+        {
+          "id": "f_fred_no_pranks",
+          "text": "Never bring clown noses or pranks anywhere near Fred — he cannot stand them.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["gifts", "tastes"],
+          "core": ["gifts"]
+        },
+        {
+          "id": "f_fred_no_pity",
+          "text": "Nobody pities Fred out loud about his health — care means driving him somewhere, helping with something, sitting nearby, not words.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["health", "tastes"],
+          "core": ["health"]
+        },
+        {
+          "id": "f_fred_purple",
+          "text": "The color purple Fred merely dislikes, without drama.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["tastes"]
+        },
+        {
+          "id": "f_fred_docs",
+          "text": "Fred watches historical documentaries.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["hobbies"]
+        },
+        {
+          "id": "f_fred_gifts",
+          "text": "Presents that land for Fred: books on the history of weapons, models and lots for the collection, restoration tools.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["gifts"],
+          "keys": ["gift for grandpa"]
+        },
+        {
+          "id": "f_fred_birthday",
+          "text": "Fred's birthday is December 12.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family calendar" },
+          "groups": ["gifts", "traditions"],
+          "keys": ["grandpa's birthday", "presents for grandpa"]
+        }
+      ],
+      "extensions": {}
+    },
+    {
+      "slug": "gillian",
+      "type": "person",
+      "name": "Gillian Holbrook",
+      "aliases": ["Grandma", "Grandma Gillian"],
+      "facts": [
+        {
+          "id": "f_gillian_life",
+          "text": "Gillian was a music teacher and painted watercolors; her paintings live in Fred's room.",
+          "status": "confirmed",
+          "source": { "type": "document", "ref": "family photo archive" },
+          "time": { "to": "2021-04-02" },
+          "groups": ["memory"]
+        },
+        {
+          "id": "f_gillian_death",
+          "text": "Gillian died on April 2, 2021 — cancer; her last months were spent in a hospice.",
+          "author": "rose",
+          "status": "confirmed",
+          "source": { "type": "note", "ref": "family archive" },
+          "time": { "from": "2021-04-02" },
+          "groups": ["memory"],
+          "visibility": { "mode": "role", "role": "adults" },
+          "interpretation": [
+            {
+              "when": { "role": "children" },
+              "text": "Grandma Gillian died when Rebecca was seven. She loved painting and taught children music; her watercolors are at Grandpa's, and he is glad when they are remembered."
+            }
+          ]
+        },
+        {
+          "id": "f_gillian_anniversary",
+          "text": "Since 2022, on April 2 Fred gets the first call and the first visit, before anyone else.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family practice" },
+          "time": { "from": "2022-04-02" },
+          "groups": ["traditions", "memory"],
+          "visibility": { "mode": "role", "role": "adults" }
+        }
+      ],
+      "extensions": {}
+    },
+    {
+      "slug": "rebecca",
+      "type": "person",
+      "name": "Rebecca Carter",
+      "aliases": ["Becca"],
+      "facts": [
+        {
+          "id": "f_rebecca_age_grade",
+          "text": "Rebecca is twelve years old, in sixth grade.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["school"]
+        },
+        {
+          "id": "f_rebecca_joys",
+          "text": "Rebecca draws with markers, skates, loves the band Luna Wire, and cooks with her father on Saturdays.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["tastes", "hobbies"],
+          "keys": ["gift for Rebecca", "Becca's birthday"]
+        },
+        {
+          "id": "f_rebecca_adult_tone",
+          "text": "Rebecca insists on being spoken to as an adult, on equal terms — being talked to like a little kid offends her more than almost anything.",
+          "status": "confirmed",
+          "source": { "type": "conversation", "ref": "dialog with Rebecca" },
+          "groups": ["communication"],
+          "core": ["communication"]
+        },
+        {
+          "id": "f_rebecca_peanut",
+          "text": "Rebecca is allergic to peanuts and peanut butter — anaphylaxis; ingredients are checked every single time.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["health"],
+          "core": ["health"],
+          "revalidate": "never"
+        },
+        {
+          "id": "f_rebecca_test",
+          "text": "The algebra test on November 20 terrifies Rebecca — three failing grades in a row.",
+          "author": "rebecca",
+          "status": "confirmed",
+          "source": { "type": "conversation", "ref": "dialog with Rebecca 14.11.2026" },
+          "time": { "from": "2026-11-14" },
+          "groups": ["school"],
+          "visibility": { "mode": "owner" }
+        },
+        {
+          "id": "f_rebecca_maya",
+          "text": "Rebecca quarreled with her friend Maya over a mutual friend and has been quietly upset about it.",
+          "author": "rebecca",
+          "status": "confirmed",
+          "source": { "type": "conversation", "ref": "dialog with Rebecca 13.11.2026" },
+          "time": { "from": "2026-11-13" },
+          "groups": ["relationships"],
+          "visibility": { "mode": "owner" }
+        },
+        {
+          "id": "f_rebecca_wishlist",
+          "text": "For her birthday Rebecca wants professional markers and roller skates, size 36.",
+          "author": "rebecca",
+          "status": "confirmed",
+          "source": { "type": "document", "ref": "letter, early November 2026" },
+          "groups": ["gifts"],
+          "visibility": { "mode": "list", "principals": ["jack", "rose", "hunter"] },
+          "keys": ["Rebecca's birthday", "gift for Rebecca"]
+        }
+      ],
+      "extensions": {}
+    },
+    {
+      "slug": "hunter",
+      "type": "person",
+      "name": "Hunter Carter",
+      "aliases": ["brother", "the eldest"],
+      "facts": [
+        {
+          "id": "f_hunter_bio",
+          "text": "Hunter is twenty-four, a junior backend developer; he lives on his own and comes over on Saturdays.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["work"]
+        },
+        {
+          "id": "f_hunter_emily",
+          "text": "In October Hunter broke up with Emily; he takes it quietly, and the topic is not raised at family dinners.",
+          "status": "confirmed",
+          "source": { "type": "conversation", "ref": "Jack and Hunter 10.2026" },
+          "time": { "from": "2026-10-12" },
+          "groups": ["relationships"],
+          "visibility": { "mode": "role", "role": "adults" },
+          "keys": ["Emily"]
+        },
+        {
+          "id": "f_hunter_debt",
+          "text": "In October Hunter paid Jack back for the motorcycle, in full.",
+          "status": "confirmed",
+          "source": { "type": "message", "ref": "family chat 10.2026" },
+          "time": { "from": "2026-10-20" },
+          "groups": ["money"],
+          "visibility": { "mode": "role", "role": "adults" }
+        },
+        {
+          "id": "f_hunter_marriage",
+          "text": "Asking Hunter \"when are you getting married\" is a road to nowhere — the family has learned never to start.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["communication", "relationships"],
+          "core": ["relationships"]
+        },
+        {
+          "id": "f_hunter_joys",
+          "text": "Hunter's joys: the motorcycle, good craft coffee, chess with his grandfather.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["tastes", "hobbies"]
+        }
+      ],
+      "extensions": {}
+    },
+    {
+      "slug": "persik",
+      "type": "pet",
+      "name": "Persik",
+      "aliases": ["the cat"],
+      "facts": [
+        {
+          "id": "f_persik_food",
+          "text": "Persik the cat eats wet food only — chicken.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family life" },
+          "groups": ["household"]
+        },
+        {
+          "id": "f_persik_vacuum",
+          "text": "Persik is afraid of the vacuum cleaner.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family life" },
+          "groups": ["household"]
+        },
+        {
+          "id": "f_persik_health",
+          "text": "Persik has no allergies.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family life" },
+          "groups": ["household"]
+        }
+      ],
+      "extensions": {}
+    },
+    {
+      "slug": "carter-family",
+      "type": "family",
+      "name": "The Carter family",
+      "aliases": ["we", "our family", "the Carters"],
+      "facts": [
+        {
+          "id": "f_family_home",
+          "text": "The Carters live in a house with a garden at 12 Vyazovaya Street.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["household"]
+        },
+        {
+          "id": "f_family_renovation",
+          "text": "The bathroom renovation is planned for spring — decided in the October chat and confirmed.",
+          "status": "confirmed",
+          "source": { "type": "message", "ref": "family chat 10.2026" },
+          "time": { "from": "2026-10-01" },
+          "groups": ["household"],
+          "visibility": { "mode": "role", "role": "adults" },
+          "revalidate": "P3M"
+        },
+        {
+          "id": "f_family_reserve",
+          "text": "The family is building a reserve of six months' worth of expenses — sixty percent is already put aside.",
+          "status": "confirmed",
+          "source": { "type": "message", "ref": "family chat 09.2026" },
+          "time": { "from": "2026-09-01" },
+          "groups": ["money"],
+          "visibility": { "mode": "role", "role": "adults" },
+          "revalidate": "P1M"
+        },
+        {
+          "id": "f_family_budget",
+          "text": "The gift budget is about five thousand per person.",
+          "status": "confirmed",
+          "source": { "type": "interview", "ref": "onboarding 2026" },
+          "groups": ["money", "gifts"],
+          "visibility": { "mode": "role", "role": "adults" },
+          "interpretation": [
+            {
+              "when": { "role": "children" },
+              "text": "There is a family gift limit — check with Mom whether your idea fits."
+            }
+          ],
+          "core": ["gifts"],
+          "revalidate": "P6M"
+        },
+        {
+          "id": "f_family_friday",
+          "text": "Friday family dinner is sacred — nobody is ever struck off it.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family life" },
+          "groups": ["traditions"],
+          "core": ["traditions"]
+        },
+        {
+          "id": "f_family_bday_menu",
+          "text": "On a birthday, the birthday person chooses the menu themselves.",
+          "status": "confirmed",
+          "source": { "type": "observation", "ref": "family life" },
+          "groups": ["traditions"]
+        },
+        {
+          "id": "f_family_charter",
+          "text": "The family agreement: private things are not read into and not retold; adults' secrets are never revealed to the children, and children's secrets are never revealed to the adults; important health matters reach the children gently and are never hidden when the child asks directly. Each family member is shown the agreement when they join.",
+          "status": "confirmed",
+          "source": { "type": "document", "ref": "family charter" },
+          "groups": ["agreement"],
+          "core": ["agreement"]
+        },
+        {
+          "id": "f_family_safety",
+          "text": "The single exception to the agreement: if someone speaks of suicide, self-harm, violence, a threat to life, or abuse, the agreement breaks — Rose and Jack are told at once, with the exact words.",
+          "status": "confirmed",
+          "source": { "type": "document", "ref": "family charter" },
+          "groups": ["agreement"]
+        }
+      ],
+      "extensions": {}
+    }
+  ],
+  "extensions": {}
+}
