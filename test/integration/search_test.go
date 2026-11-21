@@ -86,16 +86,18 @@ func startDB(t *testing.T, v dbVariant) *sql.DB {
 	return db
 }
 
-// applyMigrations executes the Up part of 0001_init.sql (the Down part is split off).
+// applyMigrations executes goose Up sections for all migrations.
 func applyMigrations(t *testing.T, db *sql.DB) {
 	t.Helper()
-	raw, err := os.ReadFile("../../migrations/0001_init.sql")
-	if err != nil {
-		t.Fatalf("read migration: %v", err)
-	}
-	up := strings.SplitN(string(raw), "-- +goose Down", 2)[0]
-	if _, err := db.Exec(up); err != nil {
-		t.Fatalf("apply migration: %v", err)
+	for _, name := range []string{"0001_init.sql", "0002_ingest.sql"} {
+		raw, err := os.ReadFile("../../migrations/" + name)
+		if err != nil {
+			t.Fatalf("read %s: %v", name, err)
+		}
+		up := strings.SplitN(string(raw), "-- +goose Down", 2)[0]
+		if _, err := db.Exec(up); err != nil {
+			t.Fatalf("apply %s: %v", name, err)
+		}
 	}
 }
 

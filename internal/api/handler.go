@@ -13,14 +13,16 @@ import (
 	"github.com/ladvoy/brain/internal/api/gen"
 	"github.com/ladvoy/brain/internal/assembly"
 	"github.com/ladvoy/brain/internal/auth"
+	"github.com/ladvoy/brain/internal/ingest"
 	"github.com/ladvoy/brain/internal/model"
 	"github.com/ladvoy/brain/internal/store"
 )
 
 // API wires store + assembly to the generated contract.
 type API struct {
-	Store *store.Store
-	Asm   *assembly.Assembler
+	Store  *store.Store
+	Asm    *assembly.Assembler
+	Ingest *ingest.Service
 }
 
 var _ gen.ServerInterface = (*API)(nil)

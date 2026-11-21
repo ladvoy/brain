@@ -12,6 +12,7 @@ import (
 	"github.com/ladvoy/brain/internal/api"
 	"github.com/ladvoy/brain/internal/api/gen"
 	"github.com/ladvoy/brain/internal/assembly"
+	"github.com/ladvoy/brain/internal/ingest"
 	"github.com/ladvoy/brain/internal/store"
 )
 
@@ -44,7 +45,8 @@ func New(pool *pgxpool.Pool) http.Handler {
 	if pool != nil {
 		st := store.New(pool)
 		asm := assembly.New(st)
-		h := &api.API{Store: st, Asm: asm}
+		ing := &ingest.Service{Store: st, Config: ingest.LoadConfig()}
+		h := &api.API{Store: st, Asm: asm, Ingest: ing}
 		gen.HandlerFromMuxWithBaseURL(h, r, "/v1")
 	}
 

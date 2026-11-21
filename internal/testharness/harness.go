@@ -105,14 +105,15 @@ func start(t *testing.T, image string, expectBM25 bool) *Env {
 	}
 
 	root := repoRoot(t)
-	migPath := filepath.Join(root, "migrations", "0001_init.sql")
-	raw, err := os.ReadFile(migPath)
-	if err != nil {
-		t.Fatalf("migration: %v", err)
-	}
-	up := strings.SplitN(string(raw), "-- +goose Down", 2)[0]
-	if _, err := sqlDB.Exec(up); err != nil {
-		t.Fatalf("apply migration: %v", err)
+	for _, name := range []string{"0001_init.sql", "0002_ingest.sql"} {
+		raw, err := os.ReadFile(filepath.Join(root, "migrations", name))
+		if err != nil {
+			t.Fatalf("migration %s: %v", name, err)
+		}
+		up := strings.SplitN(string(raw), "-- +goose Down", 2)[0]
+		if _, err := sqlDB.Exec(up); err != nil {
+			t.Fatalf("apply %s: %v", name, err)
+		}
 	}
 	_ = sqlDB.Close()
 
