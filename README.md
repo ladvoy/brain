@@ -35,7 +35,7 @@ go run ./cmd/brain
 - Swagger UI: `http://localhost:8080/docs`
 - Full walkthrough (create → import Carter → two-role `/context`): [`specs/001-brain-core/quickstart.md`](specs/001-brain-core/quickstart.md)
 
-Or: `docker compose up --build` (see [`compose.yaml`](compose.yaml) — draft; production compose lives in `self-host` later).
+Or: `docker compose up --build` (see [`compose.yaml`](compose.yaml) — brain alone). The family bundle is the `self-host` repo.
 
 ## Tests
 

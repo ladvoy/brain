@@ -1,4 +1,4 @@
-# Draft compose for local / self-host dogfood (final home: self-host repo, task 1.6).
+# Draft compose for the brain alone. The family bundle (brain + web-ui + butler) lives in the self-host repo.
 # Usage: docker compose up --build
 services:
   db:
